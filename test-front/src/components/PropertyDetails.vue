@@ -9,7 +9,7 @@
       <div v-else>
         <!-- Título y precio -->
         <div class="mb-6">
-          <h1 class="text-4xl font-bold text-gray-800">{{ propertyDetails?.name }}</h1>
+          <h1 class="text-4xl font-bold text-gray-800">{{ propertyDetails?.name }} -- {{ propertyDetails?.property_type.type_name  }}</h1>
           <p class="text-lg text-gray-600 mt-2">
             Ubicación: {{ propertyDetails?.location.address }}, {{ propertyDetails?.location.city }}, {{ propertyDetails?.location.state?.state_name }}, {{ propertyDetails?.location.country?.country_name }}
           </p>

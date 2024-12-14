@@ -15,9 +15,15 @@ class PropertyService
     }
 
 
-    public function fetchList() : Collection
+    public function fetchList(array|null $filters) : Collection
     {
-        return $this->property->limit(10)->get();
+        $propertyType = $filters['property_type'] ?? null;
+        $properties = $this->property->when($propertyType, function ($query, $propertyType) {
+            return $query->whereHas('propertyType', function ($query) use ($propertyType) {
+                $query->where('id',$propertyType);
+            });
+        })->get();
+        return $properties;
     }
 
     public function fetchById(int $id) : Property
@@ -27,7 +33,7 @@ class PropertyService
 
     public function fetchByIdWithRelations(int $id) : Property
     {
-        return $this->property->with(['location.state', 'location.country','availability'])->findOrFail($id);
+        return $this->property->with(['location.state', 'location.country','availability', 'propertyType'])->findOrFail($id);
     }
 
     public function checkAvailability(array $data, int $id) : bool

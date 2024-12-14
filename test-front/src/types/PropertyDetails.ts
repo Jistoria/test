@@ -13,6 +13,11 @@ export interface Location {
       country_name: string;
     };
   }
+
+  export interface PropertyType {
+    id: number;
+    type_name: string;
+  }
   
   export interface Availability {
     id: number;
@@ -31,5 +36,6 @@ export interface Location {
     price_per_night: number;
     location: Location;
     availability: Availability[];
+    property_type: PropertyType;
   }
   

@@ -16,10 +16,10 @@ class PropertyController extends Controller
 
     }
 
-    public function index() : JsonResponse
+    public function index(Request $request) : JsonResponse
     {
         try {
-            $data = $this->propertyService->fetchList();
+            $data = $this->propertyService->fetchList($request->all());
             return response()->json($data, 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 401);
