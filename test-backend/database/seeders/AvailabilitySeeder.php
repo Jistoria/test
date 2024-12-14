@@ -10,6 +10,6 @@ class AvailabilitySeeder extends Seeder
 {
     public function run()
     {
-        Availability::factory()->count(1)->create();
+        Availability::factory()->count(50)->create();
     }
 }
