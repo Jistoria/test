@@ -29,7 +29,12 @@
     php artisan migrate --seed
     ```
 
-7. Inicia el servidor de desarrollo:
+7. Crear usuario de prueba (email => test@gmail.com  password: test)
+    ```bash
+    php artisan user:default
+    ```
+
+8. Inicia el servidor de desarrollo:
     ```bash
     php artisan serve
     ```
